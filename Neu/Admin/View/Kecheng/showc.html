@@ -1,0 +1,200 @@
+<extend name="Public/base" />
+<block name="title">课程教学大纲</block>
+<block name="main">
+
+    <style>
+
+        /*returnTop开始*/
+        div#back-to-top{
+            z-index: 99999;
+            position:fixed;
+            display:none;
+            bottom:80px;
+            right:30px;
+        }
+        div#back-to-top a{
+            text-align:center;
+            text-decoration:none;
+            display:block;
+            width:38px;
+            /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+            -moz-transition:color 1s;
+            -webkit-transition:color 1s;
+            -o-transition:color 1s;
+        }
+        div#back-to-top a:hover{
+            color:#979797;
+        }
+        div#back-to-top a span{
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat ;
+            background-size: contain;
+            border-radius:6px;
+            display:block;
+            height:38px;
+            width:38px;
+            margin-bottom:5px;
+            /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+            -moz-transition:background 1s;
+            -webkit-transition:background 1s;
+            -o-transition:background 1s;
+        }
+        div#back-to-top a:hover span{
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat ;
+            background-size: contain;
+        }
+        /*returnTop结束*/
+
+    </style>
+    <div class="container-fluid" data-spy="scroll" data-target="#myscrollspy">
+        <div class="header">
+            <h1 class="text-center">资土学院 课程教学大纲(C版课程库)</h1>
+        </div>
+    </div>
+
+    <!--返回顶部-->
+    <div id="top"></div>
+    <div id="back-to-top"><a href="#top"><span></span></a></div>
+
+    <div class="container-fluid table-responsive">
+        <table class="table table-bordered">
+            <caption>
+                <form class="navbar-form" action="__SELF__" method="post">
+                <p>
+                    菜单项：
+                    <a href="javascript:void(0);" class="active btn btn-next">C版课程库</a> |
+                    <a href="__CONTROLLER__/showb" class="btn btn-xs btn-primary">B版课程库</a>
+                </p>
+                    筛选条件：
+                    <div class="form-group">
+                        <select name="SMajor" class="selectpicker form-control">
+                            <option value="">--选择专业--</option>
+                            <option value="测绘工程">测绘工程</option>
+                            <option value="采矿工程">采矿工程</option>
+                            <option value="土木工程">土木工程</option>
+                            <option value="安全工程">安全工程</option>
+                            <option value="环境工程">环境工程</option>
+                            <option value="矿物加工工程">矿物加工工程</option>
+                            <option value="资源勘查工程">资源勘查工程</option>
+                        </select>
+                    </div>
+                    <div data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-default"><input name="status" type="radio" value="1">已填写</label>　
+                        <label class="btn btn-default"><input name="status" type="radio" value="0">待填写</label>　
+                    </div>
+                    <div class="form-group">
+                        <input name="keywords" type="text" class="form-control" placeholder="键入关键字 模糊检索">
+                        <button type="submit" class="btn btn-info">检索</button>
+                    </div>
+                </form>
+            </caption>
+                <tr>
+                    <th>序号</th>
+                    <!--<th>计划批次</th>-->
+                    <th>专业名称</th>
+                    <th>课程编号</th>
+                    <th>课程名称</th>
+                    <th>学期学分</th>
+                    <th>学期学时</th>
+                    <th>理论学时</th>
+                    <th>实验学时</th>
+                    <th>上机学时</th>
+                    <th>操作</th>
+                </tr>
+                <foreach name="data" item="vo" key="k">
+                        <tr>
+                            <td>{$k+1}</td>
+                            <!--<td>{$vo.计划批次}</td>-->
+                            <td>{$vo.专业名称}</td>
+                            <td>{$vo.课程编号}</td>
+                            <if condition="$vo.status eq 0">
+                                <td class="bg-danger">
+                                    <span class="glyphicon glyphicon-wrench"></span> 　
+                                    <a class="text-success" href="__CONTROLLER__/add?id={$vo.id}&ccode={$vo.课程编号}&flag=0" title="填写与完善">{$vo.课程名称}</a>
+                                </td>
+                            <else />
+                                <td class="bg-success text-success">
+                                    <span class="text-success  alert-success glyphicon glyphicon-ok-circle"></span> 　{$vo.课程名称}
+                                </td>
+                            </if>
+                            <td>{$vo.学期学分}</td>
+                            <td>{$vo.学期学时}</td>
+                            <td>{$vo.理论学时}</td>
+                            <td>{$vo.实验学时}</td>
+                            <td>{$vo.上机学时}</td>
+                            <td class="text-center">
+                                <if condition="$vo.status eq 0">
+                                    <a href="__CONTROLLER__/add?id={$vo.id}&ccode={$vo.课程编号}&flag=0" title="填写与完善"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                                    <else />
+                                    <span class="text-success  alert-success glyphicon glyphicon-ok-circle"></span>
+                                </if>
+                            </td>
+                        </tr>
+                </foreach>
+
+            </table>
+    </div>
+
+    <script>
+        /*
+         * 回到顶部
+         * */
+        $(function(){
+            //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+            $(function () {
+                $(window).scroll(function(){
+                    if ($(window).scrollTop()>100){
+                        $("#back-to-top").fadeIn(1500);
+                    } else {
+                        $("#back-to-top").fadeOut(1500);
+                    }
+                });
+
+                //当点击跳转链接后，回到页面顶部位置
+                $("#back-to-top").click(function(){
+                    $('body,html').animate({scrollTop:0},1000);
+                    return false;
+                });
+            });
+        });
+/*
+        function allchk(){
+            var chknum = $("input[type='checkbox']").size();//选项总个数
+            var chk = 0;
+            $("input[type='checkbox']").each(function () {
+                if($(this).prop("checked")==true){
+                    chk++;
+                }
+            });
+            if(chknum===chk){
+                //全选
+                $("#all").prop("checked",true);
+            } else {
+//                不全选
+                $("#all").prop("checked",false);
+            }
+        }
+        $(function () {
+
+            //全选或全不选
+            $("#all").click(function(){
+                if(this.checked){
+                    $("input[type='checkbox']").prop("checked", true);
+                }else{
+                    $("input[type='checkbox']").prop("checked", false);
+                }
+            });
+
+////            //设置全选复选框
+            $("input[type='checkbox']").click(function(){
+                allchk();
+            });
+
+        });
+
+*/
+
+
+    </script>
+</block>
+
+

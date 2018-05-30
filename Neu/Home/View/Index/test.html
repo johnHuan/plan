@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东北大学 资源于土木工程学院 </title>
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/css/index.css">
+</head>
+<body>
+
+
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script>
+    $(function () {
+
+        setInterval(function () {
+
+        }, 1000*60*60);
+//        console.log(time());
+
+        $.ajax({
+            url: 'http://218.244.129.243:89/gpsonline/GPSAPI?version=1&method=loadHistory&vid=9497901&vKey=57b741f0a59ee566a26ee3cadfbfa00d&bTime=1495409041000&eTime=1495523876000&datafile=true',
+            type: 'get',
+            success: function (data, xhr, status) {
+                console.log(data);
+            },
+            error: function (event) {
+              console.log(event);
+            },
+            complete: function () {
+              console.log('complete');
+            }
+        });
+    });
+</script>
+</body>
+</html>

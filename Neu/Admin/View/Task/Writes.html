@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东北大学2016-2017学年第二学期教学任务书 </title>
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/css/index.css">
+    <link rel="stylesheet"  media="screen" type="text/css" href="__PUBLIC__/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet"  media="screen" type="text/css" href="__PUBLIC__/css/bootstrap/bootstrap-responsive.css">
+    <link rel="stylesheet"  media="screen" type="text/css" href="__PUBLIC__/css/bootstrap/bootstrap-overrides.css">
+</head>
+<body>
+
+<!--body start-->
+<div class="container-fluid">
+    <div class="header">
+        <h1 class="text-center visible-lg">东北大学2016-2017学年第二学期教学任务书</h1>
+    </div>
+    <span class="glyphicon glyphicon glyphicon-tasks" aria-hidden="true"></span>
+    <thead>
+        <span class="text-info">授课单位：资源与土木工程学院        编号：10</span>
+        <span class="pull-right text-success">当前教师：{$Think.session.teacher_name};　　职称：{$Think.session.teacher_level}</span>
+    </thead>
+    <form action="__SELF__" method="post" class="form-horizon">
+        <table class="table table-condensed table-striped table-hover">
+            <tr>
+                <th>课程编号</th>
+                <td>{$list.course_num}</td>
+                <th>课程名称</th>
+                <td>{$list.course_name}</td>
+                <th>上课班级</th>
+                <td>{$list.have_class}</td>
+            </tr>
+            <tr>
+                <th>周学时</th>
+                <td><input type="text" required class="inline-input" name="week_time"  value="{$list.week_time}"></td>
+                <th>始周</th>
+                <td><input type="text" required class="inline-input" name="start_week"  value="{$list.start_week}"></td>
+                <th>止周</th>
+                <td><input type="text" required class="inline-input" name="deadline"  value="{$list.deadline}"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    主讲教师
+                </td>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <td><input data-toggle="tooltip" title="每输完一位老师后打一个空格，自动调用职称和年龄"  data-placement="auto" style="width:100%;" type="text" required class="inline-input" name="tv_name"  value="{$list.tv_name}"></td>
+                <th>职称</th>
+                <td><input style="width:100%;" type="text" required class="inline-input" name="tv_level" value="{$list.tv_level}"></td>
+                <th>年龄</th>
+                <td><input style="width:100%;" type="text" required class="inline-input" name="tv_age" value="{$list.tv_age}"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    实验课教师
+                </td>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <td><input data-toggle="tooltip" title="每输完一位老师后打一个空格，自动调用职称和年龄"  data-placement="auto" style="width:100%;"  type="text" required class="inline-input" name="ts_name" value="{$list.ts_name}"></td>
+                <th>职称</th>
+                <td><input style="width:100%;" type="text" required class="inline-input" name="ts_level" value="{$list.ts_level}"></td>
+                <th>年龄</th>
+                <td><input style="width:100%;" type="text" required class="inline-input" name="ts_age" value="{$list.ts_age}"></td>
+            </tr>
+            <tr>
+                <th>外聘教师</th>
+                <td><input type="text" required class="inline-input" name="is_twai" value="{$list.is_twai}"></td>
+                <th>助课教师</th>
+                <td><input type="text" required class="inline-input" name="t_assist" value="{$list.t_assist}"></td>
+                <th>是否双语课</th>
+                <td><input type="text" required class="inline-input" name="is_biling" value="{$list.is_biling}"></td>
+            </tr>
+            <tr>
+                <th>教室类型(多媒体)</th>
+                <td><input type="text" required class="inline-input" name="classroom_style" value="{$list.classroom_style}"></td>
+                <th>实验周</th>
+                <td><input type="text" required class="inline-input" name="practise_week" value="{$list.practise_week}"></td>
+                <th>实验周学时</th>
+                <td><input type="text" required class="inline-input" name="practise_wtime" value="{$list.practise_wtime}"></td>
+            </tr>
+            <tr>
+                <th>实验分组数</th>
+                <td><input type="text" required class="inline-input" name="practise_group" value="{$list.practise_group}"></td>
+                <th>实验地点</th>
+                <td><input type="text" required class="inline-input" name="practise_addr" value="{$list.practise_addr}"></td>
+                <th>上机周</th>
+                <td><input type="text" required class="inline-input" name="have_mweek" value="{$list.have_mweek}"></td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <textarea class="form-control" required name="memo"  placeholder="备注">{$list.memo}</textarea>
+        </div>
+        <input type="submit" class="form-control btn btn-primary" value="提交">
+    </form>
+</div>
+<!-- End container-->
+<br><br>
+<div class="container">
+    <div class="footer">
+        &copy; 2016-2016 Northeastern University 资源与土木工程学院  地理信息系统GIS. <br />
+        author： 张桓；  All rights reserved.<br />
+        技术咨询：john；   248404941（QQ）；yz30.com@aliyun.com（email）；
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        var y = new Date();
+        var currentYear = y.getFullYear();
+        //主讲教师
+        $('input[name="tv_name"]').on('keyup', function(event){
+            var tv_value = $('input[name="tv_name"]').val();
+            var flag = tv_value.charAt(tv_value.length-1);
+            if(flag==' '||flag==' '){
+//            alert("输入完一个老师了");
+//            ajax发送数据
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        tv_name: tv_value,
+                    },
+                    url: "__CONTROLLER__/get_tage",
+                    success: function(res){
+//                        alert(res.t_name);
+                        t_level = $('input[name="tv_level"]').val();
+                        t_age = $('input[name="tv_age"]').val();
+
+                        if (t_level == ''){
+                            tv_level = t_level + res.t_level;
+                            $('input[name="tv_level"]').val(tv_level);
+
+                            var age = parseInt(currentYear) - parseInt(res.t_birthYear);
+
+                            tv_age = t_age + age;
+                            $('input[name="tv_age"]').val(tv_age);
+                        } else {
+                            tv_level = t_level + ','+ res.t_level;
+
+                            $('input[name="tv_level"]').val(tv_level);
+
+                            var age = parseInt(currentYear) - parseInt(res.t_birthYear);
+
+                            tv_age = t_age +','+ age;
+                            $('input[name="tv_age"]').val(tv_age);
+                        }
+
+                    }
+                });
+            }
+        });
+
+        //实验教师
+        $('input[name="ts_name"]').on('keyup', function(event){
+            var ts_value = $('input[name="ts_name"]').val();
+            var flag = ts_value.charAt(ts_value.length-1);
+            if(flag==' '||flag==' '){
+//            alert("输入完一个老师了");
+//            ajax发送数据
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        tv_name: ts_value,
+                    },
+                    url: "__CONTROLLER__/get_tage",
+                    success: function(res){
+//                        alert(res.t_name);
+                        t_level = $('input[name="ts_level"]').val();
+                        t_age = $('input[name="ts_age"]').val();
+
+                        if (t_level == ''){
+                            tv_level = t_level + res.t_level;
+                            $('input[name="ts_level"]').val(tv_level);
+
+                            var age = parseInt(currentYear) - parseInt(res.t_birthYear);
+
+                            tv_age = t_age + age;
+                            $('input[name="ts_age"]').val(tv_age);
+                        } else {
+                            tv_level = t_level + ','+ res.t_level;
+
+                            $('input[name="ts_level"]').val(tv_level);
+
+                            var age = parseInt(currentYear) - parseInt(res.t_birthYear);
+
+                            tv_age = t_age +','+ age;
+                            $('input[name="ts_age"]').val(tv_age);
+                        }
+
+                    }
+                });
+            }
+        });
+
+
+    })
+
+</script>
+</body>
+</html>
+
+

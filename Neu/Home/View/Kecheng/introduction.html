@@ -1,0 +1,76 @@
+<extend name="Public/base" />
+<block name="title">课程教学大纲</block>
+<block name="main">
+    <!--<script src="__PUBLIC__/bootstrap/js/validator.min.js"></script>-->
+    <style>
+        input[type="reset"]{background: #337ab7; text-decoration: none;}
+        .button{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;
+            *display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;
+            *line-height:20px;color:#fff;
+            text-align:center;vertical-align:middle;cursor:pointer;background:#5bb75b;
+            border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+            border-bottom-color:#b3b3b3;-webkit-border-radius:4px;
+            -moz-border-radius:4px;border-radius:4px;}
+        .button input{position: absolute;top: 0; right: 0;margin: 0;border:solid transparent;
+            opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+        .progress{position:relative; margin-left:100px; margin-top:-24px;
+            width:200px;padding: 1px; border-radius:3px; display:none}
+        .bar {background-color: green; display:block; width:0%; height:20px;
+            border-radius:3px; }
+        .percent{position:absolute; height:20px; display:inline-block;
+            top:3px; left:2%; color:#fff }
+        .files{height:22px; line-height:22px; margin:10px 0}
+        .delimg{margin-left:20px; color:#090; cursor:pointer}
+        input[type="text"]{width: 100%;}
+        textarea{width:100%;}
+        .wxs{width:50px;}
+        .wmd{width:100px;}
+        .wlg{width:150px;}
+        .wmax{width:200px;}
+        .minw{min-width: 100px}
+        .medw{min-width: 200px;}
+    </style>
+    <div class="container-fluid">
+        <div class="header">
+            <h1 class="text-center">东北大学本科生 课程简介</h1>
+        </div>
+        <form action="__CONTROLLER__/intrsave" method="post" id="myForm" role="form">
+            <!--<input type="text" value=" flag" name="flag">-->
+            <div class="panel-body table-responsive">
+                <table class="table table-bordered table-striped">
+                    <caption>
+                        编辑 课程简介：
+                    </caption>
+                    <tbody>
+                    <tr>
+                        <td colspan="2" class="text-center wmd">课程名称<br>Course Name</td>
+                        <td colspan="2" class="text-center wxs"><input readonly value="{$data.CName}" name="CName" type="text" class="inline-input medw" required></td>
+                        <td colspan="1" class="text-center wlg">课程编号<br>Course Number</td>
+                        <td colspan="2" class="text-center wxs"><input readonly value="{$data.CCode}" name="CCode" type="text" class="inline-input medw" required></td>
+                        <td colspan="2" class="text-center wmax">课程总学分<br>Total credit course </td>
+                        <td colspan="1" class="text-center "><input readonly value="{$data.totalSNum}" name="totalSNum" type="text" class="inline-input medw" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="text-center">课程简介（中文）： 300-500字</td>
+                        <td colspan="9">
+                            <textarea readonly name="CIntroduction" cols="30" rows="10" required>{$data.CIntroduction}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="text-center">undergraduate courses（In English）： </td>
+                        <td colspan="9">
+                            <textarea name="EInfo" cols="30" rows="10" required aria-required="true" placeholder="无内容， 请尽快填写" data-require="true">{$data.EInfo}</textarea>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group col-md-4">
+                <button class="sub form-control btn btn-primary" type="submit" >确认提交</button>
+            </div>
+        </form>
+    </div>
+</block>
+
+

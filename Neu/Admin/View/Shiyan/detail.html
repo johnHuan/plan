@@ -1,0 +1,271 @@
+<extend name="Public/base" />
+<block name="title">实验教学大纲</block>
+<block name="main">
+
+    <style>
+
+        /*returnTop开始*/
+        div#back-to-top{
+            z-index: 99999;
+            position:fixed;
+            display:none;
+            bottom:80px;
+            right:30px;
+        }
+        div#back-to-top a{
+            text-align:center;
+            text-decoration:none;
+            display:block;
+            width:38px;
+            /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+            -moz-transition:color 1s;
+            -webkit-transition:color 1s;
+            -o-transition:color 1s;
+        }
+        div#back-to-top a:hover{
+            color:#979797;
+        }
+        div#back-to-top a span{
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat ;
+            background-size: contain;
+            border-radius:6px;
+            display:block;
+            height:38px;
+            width:38px;
+            margin-bottom:5px;
+            /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+            -moz-transition:background 1s;
+            -webkit-transition:background 1s;
+            -o-transition:background 1s;
+        }
+        div#back-to-top a:hover span{
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat ;
+            background-size: contain;
+        }
+        /*returnTop结束*/
+        input[type="reset"]{background: #337ab7; text-decoration: none;}
+        .button{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;
+            *display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;
+            *line-height:20px;color:#fff;
+            text-align:center;vertical-align:middle;cursor:pointer;background:#5bb75b;
+            border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+            border-bottom-color:#b3b3b3;-webkit-border-radius:4px;
+            -moz-border-radius:4px;border-radius:4px;}
+        .button input{position: absolute;top: 0; right: 0;margin: 0;border:solid transparent;
+            opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+        .progress{position:relative; margin-left:100px; margin-top:-24px;
+            width:200px;padding: 1px; border-radius:3px; display:none}
+        .bar {background-color: green; display:block; width:0%; height:20px;
+            border-radius:3px; }
+        .percent{position:absolute; height:20px; display:inline-block;
+            top:3px; left:2%; color:#fff }
+        .files{height:22px; line-height:22px; margin:10px 0}
+        .delimg{margin-left:20px; color:#090; cursor:pointer}
+    </style>
+    <div class="container-fluid" data-spy="scroll" data-target="#myscrollspy">
+        <div class="header">
+            <h1 class="text-center">资土学院 实验课程明细</h1>
+        </div>
+    </div>
+
+    <!--返回顶部-->
+    <div id="top"></div>
+    <div id="back-to-top"><a href="#top"><span></span></a></div>
+
+
+    <div class="container-fluid table-responsive">
+        <table class="table table-bordered table-hover">
+            <caption>
+                <form class="navbar-form" action="__SELF__" method="post">
+
+                    筛选条件：
+                    <div data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-default"><input name="version" type="radio" value="B">B版</label>　
+                        <label class="btn btn-default"><input name="version" type="radio" value="C">C版</label>　
+                    </div>
+                    <div data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-default"><input name="card" type="radio" value="0">缺卡片</label>　
+                        <label class="btn btn-default"><input name="card" type="radio" value="1">有卡片</label>　
+                    </div>
+                    <div class="form-group">
+                        <select name="year" class="selectpicker form-control">
+                            <option value="">&#45;&#45;  选择学期  &#45;&#45;</option>
+                            <option value="781">2017~2018第一学期</option>
+                            <option value="672">2016~2017第二学期</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="keywords" type="text" style="width: 400px" class="form-control" placeholder="键入关键字 模糊检索: 课程编号 \ 课程名称 \ 任课教师">
+                        <input type="submit" name="style" class="btn btn-info" value="检索" />
+                        <input type="submit" name="style" class="btn btn-success" value="下载数据" />
+                        <input type="submit" name="style" class="btn btn-success" value="同课程名合并后下载" />
+                    </div>
+                </form>
+            </caption>
+            <tr>
+                <th nowrap="nowrap">序号</th>
+                <th nowrap="nowrap">课程编号</th>
+                <th nowrap="nowrap">课程名称</th>
+                <th nowrap="nowrap">实验类型</th>
+                <th nowrap="nowrap">实验项目名称</th>
+                <th nowrap="nowrap">实验项目类型</th>
+                <th nowrap="nowrap">实验项目学时</th>
+                <th nowrap="nowrap">卡片</th>
+                <th nowrap="nowrap">实验教师</th>
+                <th nowrap="nowrap">实验学时</th>
+                <th nowrap="nowrap">上课对象</th>
+            </tr>
+
+            <if condition="$list eq ''">
+                <tr>
+                    <td colspan="9" class="bg-danger">
+                        <span class="text-warning">没有任何数据</span>
+                    </td>
+                </tr>
+                <else />
+                <foreach name="list" item="vo" key="k">
+                    <tr>
+                        <td nowrap="nowrap">{$k+1}</td>
+                        <td nowrap="nowrap">{$vo.CCode}</td>
+                        <td nowrap="nowrap">{$vo.CName}</td>
+                        <td nowrap="nowrap">{$vo.TestStyle}</td>
+                        <td>{$vo.TestName}</td>
+                        <td nowrap="nowrap" class="text-warning">{$vo.TestStyle}</td>
+                        <td nowrap="nowrap" >{$vo.TestXueShi}</td>
+                        <td>
+                            <if condition="$vo.card eq 0">
+                                <button class="btn btn-xs btn-primary" data-toggle="modal" data-target="#uploadFile" data-id="{$vo.id}" data-ccode="{$vo.id}" title="上传实验卡片" id="{$vo.id}&{$vo.CCode}"><span class="glyphicon glyphicon-upload"></span></button>
+                                <else />
+                                <a class="btn btn-xs btn-info" href="__ROOT__/{$vo.filename}" title="下载实验卡片" target="_blank">
+                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                </a>
+                            </if>
+                        </td>
+
+                        <td nowrap="nowrap">{$vo.CMaster}</td>
+                        <td nowrap="nowrap">{$vo.TNum}</td>
+                        <td nowrap="nowrap">{$vo.上课对象}</td>
+                    </tr>
+                </foreach>
+            </if>
+        </table>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="uploadFile" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">上传实验项目卡片（Word文件）</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="button">
+                        <span>添加附件</span>
+                        <input id="fileupload" type="file" name="mypic">
+                        <!--<input type="text" name="hiddenCCode" value="zhanghuan">-->
+                    </div>
+                    <div class="progress">
+                        <span class="bar"></span><span class="percent">0%</span >
+                    </div>
+                    <div class="files"></div>
+                    <div id="showimg"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default close-modal" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        /*
+         * 回到顶部
+         * */
+        $(function(){
+            //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+            $(function () {
+                $(window).scroll(function(){
+                    if ($(window).scrollTop()>100){
+                        $("#back-to-top").fadeIn(1500);
+                    } else {
+                        $("#back-to-top").fadeOut(1500);
+                    }
+                });
+
+                //当点击跳转链接后，回到页面顶部位置
+                $("#back-to-top").click(function(){
+                    $('body,html').animate({scrollTop:0},1000);
+                    return false;
+                });
+            });
+        });
+
+
+        $(function () {
+            var bar = $('.bar');
+            var percent = $('.percent');
+            var showimg = $('#showimg');
+            var progress = $(".progress");
+            var files = $(".files");
+            var btn = $(".button span");
+            $("button").on('click', function () {
+
+                var id = this.id;
+
+                $("#fileupload").wrap("<form id='myupload' action='__CONTROLLER__/uploadCard' method='post' enctype='multipart/form-data'></form>");
+                $("#fileupload").change(function(){             // 选择文件
+                    $("#myupload").ajaxSubmit({
+                        dataType:  'json',                      // 数据格式为json
+                        data: {
+                            id: id,
+                        },
+                        beforeSend: function() {                // 开始上传
+                            showimg.empty();                    // 清空显示的图片
+                            progress.show();                    // 显示进度条
+                            var percentVal = '0%';              // 开始进度为0%
+                            bar.width(percentVal);              // 进度条的宽度
+                            percent.html(percentVal);           // 显示进度为0%
+                            btn.html("上传中...");               //上传按钮显示上传中
+                        },
+                        uploadProgress: function(event, position, total, percentComplete) {
+                            var percentVal = percentComplete + '%'; // 获得进度
+                            bar.width(percentVal);                  // 上传进度条宽度变宽
+                            percent.html(percentVal);               // 显示上传进度百分比
+                        },
+                        success: function(data) {                   //成功
+                            //获得后台返回的json数据，显示文件名，大小，以及删除按钮
+                            showimg.html(data);
+
+                            btn.html("添加附件");                    //上传按钮还原
+//                        window.location = "__ACTION__";
+                        },
+                        error:function(xhr){                        //上传失败
+                            btn.html("上传失败");
+                            bar.width('0');
+                            files.html(xhr.responseText);           //返回失败信息
+                        }
+                    });
+                });
+
+            });
+        });
+
+        $(function () {
+            $('button.close-modal').on('click', function () {
+                window.location = "__ACTION__";
+            })
+        });
+
+
+    </script>
+</block>
+
+

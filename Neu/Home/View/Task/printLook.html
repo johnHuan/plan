@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东北大学2016-2017学年第二学期教学任务书 </title>
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/css/index.css">
+</head>
+<body>
+<button onclick="window.print();">打印</button>
+<!--body start-->
+    <div class="header">
+        <h1 class="text-center">东北大学2016-2017学年第二学期教学任务书</h1>
+    </div>
+
+    <thead>
+        <span class="text-info">授课单位：资源与土木工程学院        编号：10</span>
+    </thead>
+    <!--<div class="panel-body table-responsive">-->
+        <table class="table  table-condensed table-bordered table-striped table-hover">
+            <tr>
+                <th class="text-center" rowspan="2" nowrap="nowrap">序 号</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">任务号</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">课程编号</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">课程名称</th>
+                <th class="text-center" colspan="9" nowrap="nowrap">本学期执行</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">类别（课群）</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">课程类型</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">考核方式</th>
+                <th class="text-center" colspan="4" nowrap="nowrap">上课班级</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">教研室</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">合班数</th>
+                <th class="text-center" colspan="3"  nowrap="nowrap">主讲教师</th>
+                <th class="text-center" colspan="3" nowrap="nowrap">实验课教师</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">外聘教师</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">助课教师</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">是否双语课</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">教室类型(多媒体)</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">实验周</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">实验周学时</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">实验分组数</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">实验地点</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">上机周</th>
+                <th class="text-center" rowspan="2" nowrap="nowrap">备注</th>
+            </tr>
+            <tr>
+                <th class="text-center" nowrap="nowrap">学期学时</th>
+                <th class="text-center" nowrap="nowrap">学分</th>
+                <th class="text-center" nowrap="nowrap">周学时</th>
+                <th class="text-center" nowrap="nowrap">始周</th>
+                <th class="text-center" nowrap="nowrap">止周</th>
+                <th class="text-center" nowrap="nowrap">理论学时</th>
+                <th class="text-center" nowrap="nowrap">实验学时</th>
+                <th class="text-center" nowrap="nowrap">上机学时</th>
+                <th class="text-center" nowrap="nowrap">课外</th>
+                <th class="text-center" nowrap="nowrap">专业</th>
+                <th class="text-center" nowrap="nowrap">年级</th>
+                <th class="text-center" nowrap="nowrap">上课班级</th>
+                <th class="text-center" nowrap="nowrap">人数</th>
+                <th class="text-center" nowrap="nowrap">姓名</th>
+                <th class="text-center" nowrap="nowrap">职称</th>
+                <th class="text-center" nowrap="nowrap">年龄</th>
+                <th class="text-center" nowrap="nowrap">姓名</th>
+                <th class="text-center" nowrap="nowrap">职称</th>
+                <th class="text-center" nowrap="nowrap">年龄</th>
+            </tr>
+            <foreach name="list" item="vo" key="kk">
+                <tr>
+                    <td nowrap="nowrap"><a href="__CONTROLLER__/Writes?rid={$vo.rid}" target="_blank">{$vo.r_num}</a></td>
+                    <td nowrap="nowrap">{$vo.task_id          }</td>
+                    <td nowrap="nowrap">{$vo.course_num       }</td>
+                    <td nowrap="nowrap">{$vo.course_name      }</td>
+                    <td nowrap="nowrap">{$vo.course_peroid    }</td>
+                    <td nowrap="nowrap">{$vo.course_score     }</td>
+                    <td nowrap="nowrap">{$vo.week_time        }</td>
+                    <td nowrap="nowrap">{$vo.start_week       }</td>
+                    <td nowrap="nowrap">{$vo.deadline         }</td>
+                    <td nowrap="nowrap">{$vo.lilun_time       }</td>
+                    <td nowrap="nowrap">{$vo.practise_timie   }</td>
+                    <td nowrap="nowrap">{$vo.pc_time          }</td>
+                    <td nowrap="nowrap">{$vo.outside          }</td>
+                    <td nowrap="nowrap">{$vo.course_group     }</td>
+                    <td nowrap="nowrap">{$vo.course_style     }</td>
+                    <td nowrap="nowrap">{$vo.exam_style       }</td>
+                    <td nowrap="nowrap">{$vo.majors			}</td>
+                    <td nowrap="nowrap">{$vo.years			}</td>
+                    <td nowrap="nowrap">{$vo.have_class		}</td>
+                    <td nowrap="nowrap">{$vo.sum_stu			}</td>
+                    <td nowrap="nowrap">{$vo.study_room		}</td>
+                    <td nowrap="nowrap">{$vo.merge_class		}</td>
+                    <td nowrap="nowrap">{$vo.tv_name			}</td>
+                    <td nowrap="nowrap">{$vo.tv_level}</td>
+                    <td nowrap="nowrap">{$vo.tv_age						}</td>
+                    <td nowrap="nowrap">{$vo.ts_name						}</td>
+                    <td nowrap="nowrap">{$vo.ts_level						}</td>
+                    <td nowrap="nowrap">{$vo.ts_age						}</td>
+                    <td nowrap="nowrap">{$vo.is_twai						}</td>
+                    <td nowrap="nowrap">{$vo.t_assist						}</td>
+                    <td nowrap="nowrap">{$vo.is_biling					}</td>
+                    <td nowrap="nowrap">{$vo.classroom_style				}</td>
+                    <td nowrap="nowrap">{$vo.practise_week				}</td>
+                    <td nowrap="nowrap">{$vo.practise_wtime				}</td>
+                    <td nowrap="nowrap">{$vo.practise_group				}</td>
+                    <td nowrap="nowrap">{$vo.practise_addr				}</td>
+                    <td nowrap="nowrap">{$vo.have_mweek					}</td>
+                    <td nowrap="nowrap">{$vo.memo		}</td>
+
+                </tr>
+            </foreach>
+
+        </table>
+
+
+
+</body>
+</html>
+
+

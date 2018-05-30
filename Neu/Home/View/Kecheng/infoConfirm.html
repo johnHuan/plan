@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>确认</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/css/index.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-responsive.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-overrides.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-select.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+</head>
+<body>
+<style>
+    body {
+        background: #CCCCCC;.
+        font-family: "宋体";
+    }
+    div.body {
+        width: 940px;
+        margin: 0 auto;
+        /*padding: 100px 100px 0 100px;*/
+        padding: 100px;
+        /*height: auto;*/
+        background: #fff;
+    }
+    div.body h1 {
+        font-family: "仿宋";
+        font-weight: bold;
+        font-size: 28px;
+        text-align: center;
+    }
+    div.body h3 {
+        /*font-family: "仿宋";*/
+        font-weight: bold;
+        font-size: 22px;
+        text-align: center;
+    }
+    div.menu{
+        width: 940px;
+        height: 100px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 100px;
+
+    }
+    table{
+        border: 2px #333 solid !important;
+    }
+    .wid75{
+        width: 75px;
+    }
+
+</style>
+<div class="body">
+    <!--<section>-->
+    <h1>东北大学本科生课程简介</h1>
+    <h3>Northeastern university，Introduction to the undergraduate courses</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td nowrap="true" colspan="4" style="text-align: left" class="text-center">课程名称：{$data.CName}<br>
+                Course name
+                </td>
+            <td colspan="3" style="text-align: left" class="text-center">课程编号：{$data.CCode}<br>
+                Course number
+            </td>
+            <td colspan="3" style="text-align: left" class="text-center">课程总学分：{$data.totalSNum}<br>
+                Total credit course
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10">课程简介（中文）： 300-500字<br>{$data.CIntroduction}</td>
+        </tr>
+        <tr>
+            <td colspan="10">undergraduate courses（In English）： <br>{$data.EInfo}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+    <div class="menu form-group">
+        <a href="__CONTROLLER__/introduction?ccode={$data.CCode}" class="btn btn-primary pull-left">返回修改</a>　　　　　　　　　　　　　
+        <a href="__CONTROLLER__/intrSubmit?ccode={$data.CCode}" class="btn btn-primary pull-right">确认提交</a>
+    </div>
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

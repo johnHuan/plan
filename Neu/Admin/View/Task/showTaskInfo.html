@@ -1,0 +1,265 @@
+<extend name="Public/base"/>
+<block name="title">教学任务</block>
+<block name="main">
+
+    <style>
+
+        /*returnTop开始*/
+        div#back-to-top {
+            z-index: 99999;
+            position: fixed;
+            display: none;
+            bottom: 80px;
+            right: 30px;
+        }
+
+        div#back-to-top a {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 38px;
+            /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+            -moz-transition: color 1s;
+            -webkit-transition: color 1s;
+            -o-transition: color 1s;
+        }
+
+        div#back-to-top a:hover {
+            color: #979797;
+        }
+
+        div#back-to-top a span {
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat;
+            background-size: contain;
+            border-radius: 6px;
+            display: block;
+            height: 38px;
+            width: 38px;
+            margin-bottom: 5px;
+            /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+            -moz-transition: background 1s;
+            -webkit-transition: background 1s;
+            -o-transition: background 1s;
+        }
+
+        div#back-to-top a:hover span {
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat;
+            background-size: contain;
+        }
+        .datagrid-btable .datagrid-cell{padding:4px 2px;}
+
+        /*returnTop结束*/
+
+
+
+
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/jquery-easyui-1.5.3/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/jquery-easyui-1.5.3/themes/icon.css">
+    <script type="text/javascript" src="__PUBLIC__/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+    <!--body start-->
+    <div class="container-fluid">
+        <div class="header">
+            <h1 class="text-center">东北大学201{$version|substr=0,1}-201{$version|substr=1,1}学年第
+                <if condition="substr($version, 2, 1) eq 1">
+                    一
+                    <else/>
+                    二
+                </if>
+                学期教学任务书
+            </h1>
+        </div>
+
+        <!--返回顶部-->
+        <div id="top"></div>
+        <div id="back-to-top"><a href="#top"><span></span></a></div>
+
+        <form class="navbar-form" action="__SELF__" method="post">
+                筛选条件：
+                <div class="form-group">
+                    <select name="上课对象" class="selectpicker form-control">
+                        <option value="">--选择专业--</option>
+                        <option value="测绘">测绘</option>
+                        <option value="采矿">采矿</option>
+                        <option value="土木">土木</option>
+                        <option value="安全">安全</option>
+                        <option value="环境">环境</option>
+                        <option value="矿物">矿物</option>
+                        <option value="资源">资源</option>
+                    </select>
+                </div>
+                <div data-toggle="buttons" class="btn-group">
+                    <label class="btn btn-default"><input name="status" type="radio" value="1">已有</label>　
+                    <label class="btn btn-default"><input name="status" type="radio" value="0">待填</label>　
+                </div>
+                <div class="form-group">
+                    <input name="keywords" type="text" class="form-control" style="width: 400px;"
+                           placeholder="课程名称 \ 课程编号 \ 任课教师">
+                    <button type="submit" class="btn btn-info ">检索</button>
+                </div>
+
+            <div class="pull-right text-info download-john"><a class="btn btn-primary" href="__CONTROLLER__/excel">下载数据</a></div>
+        </form>
+        <table class="suitHeight easyui-datagrid" data-options="rownumbers:true,singleSelect:true">
+            <thead data-options="frozen:true">
+                <tr>
+                    <th data-options="field:'状态',width:35">状态</th>
+                    <th data-options="field:'编号',width:30">序号</th>
+                    <th data-options="field:'课程编号',width:90">课程编号</th>
+                    <th data-options="field:'课程名称',width:150">课程名称</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th data-options="field:'任课教师', width:100, align:'left'">任课教师</th>
+                    <th data-options="field:'学时分配', width:100, align:'left'">主讲老师学时分配</th>
+                    <th data-options="field:'职称', width:100, align:'left'">职称</th>
+                    <th data-options="field:'年龄', width:100, align:'left'">年龄</th>
+                    <th data-options="field:'助课', width:100, align:'left'">助课</th>
+                    <th data-options="field:'外聘', width:100, align:'left'">外聘</th>
+                    <th data-options="field:'双语', width:100, align:'left'">双语（全英语）</th>
+                    <th data-options="field:'选课低于10人不开课', width:100, align:'left'">选课低于10人不开课</th>
+                    <th data-options="field:'学期学时', width:100, align:'left'">学期学时</th>
+                    <th data-options="field:'理论学时', width:100, align:'left'">理论学时</th>
+                    <th data-options="field:'周学时', width:100, align:'left'">周学时</th>
+                    <th data-options="field:'开课周', width:100, align:'left'">开课周</th>
+                    <th data-options="field:'实验学时', width:100, align:'left'">实验学时</th>
+                    <th data-options="field:'实验周', width:100, align:'left'">实验周</th>
+                    <th data-options="field:'上课对象', width:100, align:'left'">上课对象</th>
+                    <th data-options="field:'学生数', width:100, align:'left'">学生数</th>
+                    <th data-options="field:'试验场所名称', width:200, align:'left'">试验场所名称（参考分专业实验课情况</th>
+                    <th data-options="field:'上课地点', width:100, align:'left'">上课地点</th>
+                    <th data-options="field:'实验任课教师', width:100, align:'left'">实验任课教师</th>
+                    <th data-options="field:'上机学时', width:100, align:'left'">上机学时</th>
+                    <th data-options="field:'上机周', width:100, align:'left'">上机周</th>
+                    <th data-options="field:'学分', width:100, align:'left'">学分</th>
+                    <th data-options="field:'课程类型', width:100, align:'left'">课程类型</th>
+                    <th data-options="field:'备注', width:100, align:'left'">备注</th>
+                    <th data-options="field:'课群', width:100, align:'left'">课群</th>
+                    <th data-options="field:'参与选课', width:100, align:'left'">参与选课</th>
+                    <th data-options="field:'考核方式', width:100, align:'left'">考核方式</th>
+                    <th data-options="field:'开课模式', width:100, align:'left'">开课模式</th>
+                    <th data-options="field:'合班数', width:100, align:'left'">合班数</th>
+                    <th data-options="field:'参与排课', width:100, align:'left'">参与排课</th>
+                    <th data-options="field:'总学时', width:100, align:'left'">总学时</th>
+                    <th data-options="field:'不生成成绩名单', width:100, align:'left'">不生成成绩名单</th>
+                    <th data-options="field:'指定节次', width:100, align:'left'">指定节次</th>
+                    <th data-options="field:'上课时间', width:200, align:'left'">上课时间（周/星期/节数/班级）</th>
+                </tr>
+            </thead>
+            <tbody>
+            <if condition="$data eq ''">
+                <tr>
+                    <td colspan="9" class="bg-danger">
+                        <span class="text-warning">没有任何数据</span>
+                    </td>
+                </tr>
+                <else/>
+                <foreach name="data" item="vo" key="k">
+                    <tr>
+                        <td>
+                            <if condition="$vo.status eq 0">
+                                <a href="__CONTROLLER__/edit?num={$vo.任务号}" class="btn btn-xs btn-primary"
+                                   title="待编辑， 点击编辑">
+                                    <span class="glyphicon glyphicon-question-sign"></span>
+                                </a>
+                                <else/>
+                                <span class="glyphicon glyphicon-off" title="已完成"></span>
+                            </if>
+                        </td>
+                        <td>{$k+1}</td>
+                        <if condition="strlen($vo['选课低于10人不开课']) lt 1 ">
+                            <td><span class="text-success">{$vo.课程编号}</span></td>
+                        <else />
+                            <td><span class=" label-warning bg-danger">{$vo.课程编号}</span></td>
+                        </if>
+
+                        <td>
+                            <if condition="$vo.status eq 1">
+                                <a href="__CONTROLLER__/edit?num={$vo.任务号}" title="编辑">{$vo.课程名称}</a>
+                                <else/>
+                                <a href="__CONTROLLER__/edit?num={$vo.任务号}" title="编辑">{$vo.课程名称}</a>
+                            </if>
+                        </td>
+
+                        <td>{$vo.任课教师}</td>
+                        <td>{$vo.学时分配}</td>
+
+                        <td>{$vo.职称}</td>
+                        <td>{$vo.年龄}</td>
+
+                        <td>{$vo.助课}</td>
+                        <td>{$vo.外聘}</td>
+                        <td>{$vo.双语}</td>
+                        <td>{$vo.选课低于10人不开课}</td>
+                        <td>{$vo.学期学时}</td>
+                        <td>{$vo.理论学时}</td>
+                        <td>{$vo.周学时}</td>
+                        <td>{$vo.开课周}</td>
+                        <td>{$vo.实验学时}</td>
+                        <td>{$vo.实验周}</td>
+                        <td>{$vo.上课对象}</td>
+                        <td>{$vo.学生数}</td>
+                        <td>{$vo.试验场所名称}</td>
+                        <td>{$vo.上课地点}</td>
+                        <td>{$vo.实验任课教师}</td>
+                        <td>{$vo.上机学时}</td>
+                        <td>{$vo.上机周}</td>
+                        <td>{$vo.学分}</td>
+                        <td>{$vo.课程类型}</td>
+                        <td>{$vo.备注}</td>
+                        <td>{$vo.课群}</td>
+                        <td>{$vo.参与选课}</td>
+                        <td>{$vo.考核方式}</td>
+                        <td>{$vo.开课模式}</td>
+                        <td>{$vo.合班数}</td>
+                        <td>{$vo.参与排课}</td>
+                        <td>{$vo.总学时}</td>
+                        <td>{$vo.不生成成绩名单}</td>
+                        <td>{$vo.指定节次}</td>
+                        <td id="maxWidth" style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{$vo.上课时间}</td>
+
+                    </tr>
+                </foreach>
+            </if>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        /*
+         * 回到顶部
+         * */
+        $(function () {
+            //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 100) {
+                        $("#back-to-top").fadeIn(1500);
+                    } else {
+                        $("#back-to-top").fadeOut(1500);
+                    }
+                });
+
+                //当点击跳转链接后，回到页面顶部位置
+                $("#back-to-top").click(function () {
+                    $('body,html').animate({scrollTop: 0}, 1000);
+                    return false;
+                });
+            });
+        });
+
+        /**
+         * 自适应中间数据项的height
+         */
+
+        let ht = window.innerHeight - 210 - 80;
+
+        $(".suitHeight").css("maxHeight", ht).css("minHeight", 350);
+
+    </script>
+</block>
+
+
+

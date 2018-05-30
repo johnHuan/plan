@@ -1,0 +1,1 @@
+a:7:{i:0;s:3:"tid";i:1;s:5:"t_num";i:2;s:6:"t_name";i:3;s:11:"t_birthYear";i:4;s:7:"t_level";s:3:"_pk";s:3:"tid";s:5:"_type";a:5:{s:3:"tid";s:9:"bigint(2)";s:5:"t_num";s:11:"varchar(10)";s:6:"t_name";s:11:"varchar(20)";s:11:"t_birthYear";s:6:"int(2)";s:7:"t_level";s:11:"varchar(20)";}}

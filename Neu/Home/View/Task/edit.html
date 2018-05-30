@@ -1,0 +1,388 @@
+<extend name="Public/base"/>
+<block name="title">教学任务</block>
+<block name="main">
+    <!--<script src="__PUBLIC__/bootstrap/js/validator.min.js"></script>-->
+    <style>
+        input[type="reset"] {
+            background: #337ab7;
+            text-decoration: none;
+        }
+
+        .button {
+            position: relative;
+            overflow: hidden;
+            margin-right: 4px;
+            display: inline-block;
+            *display: inline;
+            padding: 4px 10px 4px;
+            font-size: 14px;
+            line-height: 18px;
+            *line-height: 20px;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            background: #5bb75b;
+            border: 1px solid #cccccc;
+            border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+            border-bottom-color: #b3b3b3;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        .button input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            border: solid transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+        }
+
+        .progress {
+            position: relative;
+            margin-left: 100px;
+            margin-top: -24px;
+            width: 200px;
+            padding: 1px;
+            border-radius: 3px;
+            display: none
+        }
+
+        .bar {
+            background-color: green;
+            display: block;
+            width: 0%;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .percent {
+            position: absolute;
+            height: 20px;
+            display: inline-block;
+            top: 3px;
+            left: 2%;
+            color: #fff
+        }
+
+        .files {
+            height: 22px;
+            line-height: 22px;
+            margin: 10px 0
+        }
+
+        .delimg {
+            margin-left: 20px;
+            color: #090;
+            cursor: pointer
+        }
+
+        input[type="text"] {
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .wxs {
+            width: 50px;
+        }
+
+        .wmd {
+            width: 100px;
+        }
+
+        .wlg {
+            width: 150px;
+        }
+
+        .minw {
+            min-width: 100px
+        }
+
+        .medw {
+            min-width: 200px;
+        }
+
+        /*returnTop开始*/
+        div#back-to-top {
+            z-index: 99999;
+            position: fixed;
+            display: block;
+            bottom: 80px;
+            right: 30px;
+        }
+
+        div#back-to-top a {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 38px;
+            /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+            -moz-transition: color 1s;
+            -webkit-transition: color 1s;
+            -o-transition: color 1s;
+        }
+
+        div#back-to-top a:hover {
+            color: #979797;
+        }
+
+        div#back-to-top a span {
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat;
+            background-size: contain;
+            border-radius: 6px;
+            display: block;
+            height: 38px;
+            width: 38px;
+            margin-bottom: 5px;
+            /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+            -moz-transition: background 1s;
+            -webkit-transition: background 1s;
+            -o-transition: background 1s;
+        }
+
+        div#back-to-top a:hover span {
+            background: transparent url('__PUBLIC__/img/top.png') no-repeat;
+            background-size: contain;
+        }
+
+        /*returnTop结束*/
+        div#sidebar-save {
+            z-index: 9999;
+            position: fixed;
+            display: block;
+            right: 20px;
+            bottom: 200px;
+        }
+
+        div#sidebar-reload {
+            z-index: 9999;
+            position: fixed;
+            display: block;
+            right: 20px;
+            bottom: 150px;
+        }
+
+    </style>
+
+
+    <!--返回顶部-->
+    <div id="top"></div>
+    <div id="sidebar-save"><button class="btn btn-info btn-xs tempSave" ><span id="save" class="glyphicon glyphicon-floppy-save" title="临时保存">保存</span></button></div>
+    <div id="sidebar-reload"><button class="btn btn-info btn-xs reload" ><span id="reload" class="glyphicon glyphicon-refresh">恢复</span></button></div>
+    <div id="back-to-top"><a href="#top"><span></span></a></div>
+
+    <div class="container-fluid">
+        <div class="header">
+            <h1 class="text-center">东北大学201{$version|substr=0,1}-201{$version|substr=1,1}学年第
+                <if condition="substr($version, 2, 1) eq 1">
+                    一
+                    <else/>
+                    二
+                </if>
+                学期教学任务书
+            </h1>
+        </div>
+        <br>
+        <form action="__CONTROLLER__/editDo" method="post" data-toggle="validator" id="myForm" role="form">
+            <table class="table table-hover">
+                <tr>
+                    <td>课程编号: <input readonly="readonly" type="text" class="inline-input" value="{$课程编号}" name="课程编号"/></td>
+                    <td>课程名称: <input readonly="readonly" type="text" class="inline-input" value="{$课程名称}" name="课程名称"/></td>
+                    <td>任课教师: <input type="text" class="inline-input" value="{$任课教师}" name="任课教师"/></td>
+                </tr>
+                <tr>
+                    <td>主讲教师学时分配<input type="text" class="inline-input" value="{$学时分配}" name="学时分配"/></td>
+                    <td>学期学时: <input readonly="readonly" type="text" class="inline-input" value="{$学期学时}" name="学期学时"/></td>
+                    <td>理论学时: <input readonly="readonly" type="text" class="inline-input" value="{$理论学时}" name="理论学时"/></td>
+                </tr>
+                <tr>
+                    <td>助课: <input type="text" class="inline-input" value="{$助课}" name="助课"/></td>
+                    <td>外聘: <input type="text" class="inline-input" value="{$外聘}" name="外聘" /></td>
+                    <td>双语（全英语）: <input type="text" class="inline-input" value="{$双语}" name="双语"/></td>
+                </tr>
+                <tr>
+                    <td>周学时: <input type="text" class="inline-input" value="{$周学时}" name="周学时"/></td>
+                    <td>开课周: <input type="text" class="inline-input" value="{$开课周}" name="开课周"/></td>
+                    <td>实验学时: <input readonly="readonly"  type="text" class="inline-input" value="{$实验学时}" name="实验学时"/></td>
+                </tr>
+                <tr>
+                    <td>实验周: <input type="text" class="inline-input" value="{$实验周}" name="实验周"/></td>
+                    <td>上课对象: <input readonly="readonly" type="text" class="inline-input" value="{$上课对象}" name="上课对象"/></td>
+                    <td>学生数: <input type="text" class="inline-input" value="{$学生数}" name="学生数"/></td>
+                </tr>
+                <tr>
+                    <td>试验场所名称（参考分专业实验课情况）:<input type="text" class="inline-input" value="{$试验场所名称}" name="试验场所名称"/></td>
+                    <td>选课低于10人不开课: <input type="text" class="inline-input" value="{$选课低于10人不开课}" name="选课低于10人不开课"/></td>
+                    <td>上课地点: <input type="text" class="inline-input" value="{$上课地点}" name="上课地点"/></td>
+
+                </tr>
+                <tr>
+                    <td>实验任课教师: <input type="text" class="inline-input" value="{$实验任课教师}" name="实验任课教师"/></td>
+                    <td>上机学时: <input  readonly="readonly" type="text" class="inline-input" value="{$上机学时}" name="上机学时"/></td>
+                    <td>上机周: <input type="text" class="inline-input" value="{$上机周}" name="上机周"/></td>
+                </tr>
+                <tr>
+                    <td>学分: <input readonly="readonly" type="text" class="inline-input" value="{$学分}" name="学分"/></td>
+                    <td>课程类型: <input readonly="readonly" type="text" class="inline-input" value="{$课程类型}" name="课程类型"/></td>
+                    <td class="text-success">备注: <input type="text" class="inline-input" value="{$备注}" name="备注"/></td>
+                </tr>
+                <tr>
+                    <td>课群: <input readonly="readonly" type="text" class="inline-input" value="{$课群}" name="课群"/></td>
+                    <td>参与选课: <input readonly="readonly" type="text" class="inline-input" value="{$参与选课}" name="参与选课"/></td>
+                    <td>开课模式: <input readonly="readonly" type="text" class="inline-input" value="{$开课模式}" name="开课模式"/></td>
+                </tr>
+                <tr>
+                    <td>合班数: <input readonly="readonly" type="text" class="inline-input" value="{$合班数}" name="合班数"/></td>
+                    <td>参与排课: <input readonly="readonly" type="text" class="inline-input" value="{$参与排课}" name="参与排课"/></td>
+                    <td>总学时: <input readonly="readonly" type="text" class="inline-input" value="{$总学时}" name="总学时"/></td>
+                </tr>
+                <tr>
+                    <td>不生成成绩名单: <input readonly="readonly" type="text" class="inline-input" value="{$不生成成绩名单}" name="不生成成绩名单"/></td>
+                    <td>指定节次: <input readonly="readonly" type="text" class="inline-input" value="{$指定节次}" name="指定节次"/></td>
+                    <td>任务号: <input readonly="readonly" type="text" class="inline-input" value="{$任务号}" name="任务号"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">上课时间（周/星期/节数/班级）: <input type="text" class="inline-input" value="{$上课时间}" name="上课时间"/></td>
+                </tr>
+            </table>
+            <div class="form-group">
+                <button class="form-control btn btn-primary" type="submit">确认提交</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+
+        /**
+         * 回到顶部
+         */
+        $(function () {
+            //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+            $(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 100) {
+                        $("#back-to-top").fadeIn(1500);
+                    } else {
+                        $("#back-to-top").fadeOut(1500);
+                    }
+                });
+
+                //当点击跳转链接后，回到页面顶部位置
+                $("#back-to-top").click(function () {
+                    $('body,html').animate({scrollTop: 0}, 1000);
+                    return false;
+                });
+            });
+        });
+
+
+        $(".tempSave").on('click', function () {
+            var CCode            = $('input[name="CCode"]').val();
+            var CName            = $('input[name="CName"]').val();
+            var EName            = $('input[name="EName"]').val();
+            var totalSNum        = $('input[name="totalSNum"]').val();
+            var theroyNum        = $('textarea[name="theroyNum"]').val();
+            var practiseNum      = $('textarea[name="practiseNum"]').val();
+            var PCNum            = $('textarea[name="PCNum"]').val();
+            var CMaster          = $('textarea[name="CMaster"]').val();
+            var TScore           = $('input[name="TScore"]').val();
+            var Thosted          = $('input[name="Thosted"]').val();
+            var SMajor           = $('input[name="SMajor"]').val();
+            var Tassess          = $('input[name="Tassess"]').val();
+            var TBefore          = $('input[name="TBefore"]').val();
+            var CStyle           = $('input[name="CStyle"]').val();
+            var TBook            = $('textarea[name="TBook"]').val();
+            var TreferBook       = $('textarea[name="TreferBook"]').val();
+            var CIntroduction    = $('textarea[name="CIntroduction"]').val();
+            var TRelation        = $('textarea[name="TRelation"]').val();
+            var TContent         = $('textarea[name="TContent"]').val();
+            var TEvaluate        = $('textarea[name="TEvaluate"]').val();
+            $.ajax({
+                data: {
+                    CCode:      CCode,
+                    CName:      CName,
+                    EName:      EName,
+                    totalSNum:  totalSNum,
+                    theroyNum:  theroyNum,
+                    practiseNum:practiseNum,
+                    PCNum:      PCNum,
+                    CMaster:    CMaster,
+                    TScore:     TScore,
+                    Thosted:    Thosted,
+                    SMajor:     SMajor,
+                    Tassess:    Tassess,
+                    TBefore:    TBefore,
+                    CStyle:     CStyle,
+                    TBook:      TBook,
+                    TreferBook: TreferBook,
+                    CIntroduction:CIntroduction,
+                    TRelation:  TRelation,
+                    TContent:   TContent,
+                    TEvaluate:  TEvaluate
+                },
+//            dataType: 'json',
+                type: 'post',
+                url: '__CONTROLLER__/saveTemp',
+                beforeSend: function () {
+                    $("#save").html("交互中。。。");
+                },
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function () {
+                    console.log('error');
+                },
+                complete: function () {
+                    $("#save").html("保存");
+                }
+            });
+
+        });
+
+        $(".reload").on('click', function () {
+            $.ajax({
+                data: {
+                    CCode: $('input[name="CCode"]').val(),
+                },
+                type: 'post',
+                url: '__CONTROLLER__/reload',
+                beforeSend: function () {
+                    $("#reload").html("恢复中。。。");
+                },
+                success: function (response) {
+                    $('textarea[name="CMaster"]').val(response["CMaster"]);
+                    $('input[name="Thosted"]').val(response["Thosted"]);
+                    $('input[name="SMajor"]').val(response["SMajor"]);
+                    $('input[name="TBefore"]').val(response["TBefore"]);
+                    $('input[name="CStyle"]').val(response["CStyle"]);
+                    $('textarea[name="TBook"]').val(response["TBook"]);
+                    $('textarea[name="TreferBook"]').val(response["TreferBook"]);
+                    $('textarea[name="CIntroduction"]').val(response["CIntroduction"]);
+                    $('textarea[name="TRelation"]').val(response["TRelation"]);
+                    $('textarea[name="TContent"]').val(response["TContent"]);
+                    $('textarea[name="TEvaluate"]').val(response["TEvaluate"]);
+                },
+                error: function () {
+                    console.log('error');
+                },
+                complete: function () {
+                    $("#reload").html("恢复");
+                }
+
+            });
+        });
+
+
+
+    </script>
+</block>
+
+

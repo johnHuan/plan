@@ -1,0 +1,196 @@
+<extend name="Public/base" />
+<block name="title">实践教学大纲</block>
+<block name="main">
+
+<style>
+    input[type="reset"]{background: #337ab7; text-decoration: none;}
+    .button{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;
+        *display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;
+        *line-height:20px;color:#fff;
+        text-align:center;vertical-align:middle;cursor:pointer;background:#5bb75b;
+        border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;
+        border-bottom-color:#b3b3b3;-webkit-border-radius:4px;
+        -moz-border-radius:4px;border-radius:4px;}
+    .button input{position: absolute;top: 0; right: 0;margin: 0;border:solid transparent;
+        opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+    .progress{position:relative; margin-left:100px; margin-top:-24px;
+        width:200px;padding: 1px; border-radius:3px; display:none}
+    .bar {background-color: green; display:block; width:0%; height:20px;
+        border-radius:3px; }
+    .percent{position:absolute; height:20px; display:inline-block;
+        top:3px; left:2%; color:#fff }
+    .files{height:22px; line-height:22px; margin:10px 0}
+    .delimg{margin-left:20px; color:#090; cursor:pointer}
+</style>
+<div class="container-fluid">
+    <div class="header">
+        <h1 class="text-center">资土学院 实践教学大纲</h1>
+    </div>
+    <form action="__SELF__" method="post">
+        <!--<input type="hidden" value="{$flag}" name="flag">-->
+        <div class="panel-body table-responsive">
+            <table class="table table-condensed table-bordered table-striped table-hover">
+            <caption>
+               添加实践教学大纲：{$data.CName}
+            </caption>
+            <tbody>
+                <tr>
+                    <td>
+                        实践课程名称：<input value="{$data.CName}" name="CName" required type="text" class="inline-input" style="width: 20%;" placeholder="教学大纲名称">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        实践课程英文名称：<input value="{$data.EName}" name="EName" required type="text" class="inline-input" style="width: 85%; text-decoration: " placeholder="XXXXXX">
+                    </td>
+                </tr>
+                <tr>
+                    <td>课程代码：
+                        <input name="CCode" required type="text" class="inline-input" placeholder="字母C开头的课程编号" value="{$data.CCode}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>学时数：
+                        <input value="{$data.TNum}" name="TNum" required type="text" class="inline-input" placeholder="填写数字">学时
+                    </td>
+                </tr>
+                <tr>
+                    <td>学分数：
+                        <input value="{$data.TScore}" name="TScore" required type="text" class="inline-input" placeholder="填写数字" >学分
+                    </td>
+                </tr>
+                <tr>
+                    <td>执笔人：
+                        <input value="{$data.TzhiBiRen}" name="TzhiBiRen" required type="text" class="inline-input" placeholder="" style="width: 50%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>讨论参加人：
+                        <input value="{$data.TTaoLunCanJia}" name="TTaoLunCanJia" required type="text" class="inline-input" placeholder="" style="width: 50%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>审核人：
+                        <input value="{$data.CConductor}" name="CConductor" required type="text" class="inline-input" placeholder="XXX">
+                    </td>
+                </tr>
+                <tr>
+                    <td>批准人：
+                        <input name="Allowed" value="车德福" type="text" required class="inline-input" placeholder="XXX">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="panel-body table-responsive">
+            <table class="table table-condensed table-bordered table-striped table-hover">
+            <tbody>
+                <tr>
+                    <td>
+                        1.目的与任务
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="destination" class="form-control" placeholder="阐述本实践环节在专业人才培养中的地位、作用及教学目标，实践任务的分解应紧扣实践目的。编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.destination}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.内容与要求</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="ContentRequire" class="form-control" placeholder="编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.ContentRequire}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3.组织方式与进度安排</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="progress" class="form-control" placeholder="明确人员组织和时间安排，集中还是分散，以及具体时间要求。编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.progress}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4.场地与设备</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="Instrument" class="form-control" placeholder="校内、校外具体地点名称。编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.Instrument}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5.配套教材或指导书</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="TBook" class="form-control" placeholder="编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.TBook}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6.考核方式与成绩评定办法</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="TEvaluate" class="form-control" placeholder="分项给出详细评分点.编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.TEvaluate}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7.其他</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea required name="TOthers" class="form-control" placeholder="编号用圈内数字;eg:①.xxx; ②.xxx;">{$data.TOthers}</textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="form-group col-md-4">
+            <input class="sub form-control btn btn-primary" value="确认提交" type="submit" >
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+
+    $(function (){
+        $('input[name="hiddenCCode"]').val($('input[name="CCode"]').val());
+        var val = parseInt($('input[name="CCode"]').val().substr(1, 4));
+        switch (val) {
+            case 1001:
+                console.log('caojianli');
+                $('input[name="CConductor"]').val('曹建立');
+                break;
+            case 1003:
+                $('input[name="CConductor"]').val('郑欣');
+                break;
+            case 1004:
+                $('input[name="CConductor"]').val('高淑玲');
+                break;
+            case 1005:
+                $('input[name="CConductor"]').val('张铭川');
+                break;
+            case 1007:
+                $('input[name="CConductor"]').val('马保东');
+                break;
+            case 1009:
+                $('input[name="CConductor"]').val('陈猛');
+                break;
+            case 1014:
+                $('input[name="CConductor"]').val('陈家富');
+                break;
+        }
+
+
+
+    });
+
+
+
+</script>
+</block>
+
+

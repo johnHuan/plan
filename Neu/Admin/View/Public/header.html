@@ -1,0 +1,235 @@
+<link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/css/index.css">
+<link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-responsive.css">
+<link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-overrides.css">
+<link rel="stylesheet" media="screen" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-select.css">
+<style>
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-submenu a.test').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+
+<nav class="container-fluid navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">教学管理系统</a>
+        <button  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#" data-toggle="dropdown">培养计划<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">采矿工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2013版-X081501-采矿工程.pdf" target="_blank">2013级</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2014版-X081501-采矿工程.pdf" target="_blank">2014级</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2015版-X081501-采矿工程.pdf" target="_blank">2015级</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2016版-X081501c-采矿工程（创新实验班）.pdf" target="_blank">2016级采矿工程（创新实验班）</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2016版-X081501-采矿工程.pdf" target="_blank">2016级</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2017版-X081501c-采矿工程（创新实验班）.pdf" target="_blank">2017级采矿工程（创新实验班）</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/采矿/2017版-X081501-采矿工程.pdf" target="_blank">2017级</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">土木工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2013版-X081001-土木工程.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2014版-X081001-土木工程.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2015版-X081001y-土木工程（英语）.pdf" target="_blank">2015版(英语)</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2015版-X081001-土木工程.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2016版-X081001-土木工程.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木/2017版-X081001-土木工程.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">土木工程（国防生）<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木工程国防生/2013版-X081001g-土木工程（国防生）.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木工程国防生/2014版-X081001g-土木工程（国防生）.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木工程国防生/2015版-X081001g-土木工程（国防生）.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木工程国防生/2016版-X081001g-土木工程（国防生）.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/土木工程国防生/2017版-X081001g-土木工程（国防生）.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">安全工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/安全/2013版-X082901-安全工程.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/安全/2014版-X082901-安全工程.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/安全/2015版-X082901-安全工程.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/安全/2016版-X082901-安全工程.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/安全/2017版-X082901-安全工程.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">测绘工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/测绘/2013版-X081201-测绘工程.pdf" target="_blank"/>2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/测绘/2014版-X081201-测绘工程.pdf" target="_blank"/>2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/测绘/2015版-X081201-测绘工程.pdf" target="_blank"/>2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/测绘/2016版-X081201-测绘工程.pdf" target="_blank"/>2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/测绘/2017版-X081201-测绘工程.pdf" target="_blank"/>2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">环境工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/环境/2013版-X082502-环境工程.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/环境/2014版-X082502-环境工程.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/环境/2015版-X082502-环境工程.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/环境/2016版-X082502-环境工程.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/环境/2017版-X082502-环境工程.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">资源勘查工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/资源勘查/2013版-X081403-资源勘查工程.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/资源勘查/2014版-X081403-资源勘查工程.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/资源勘查/2015版-X081403-资源勘查工程.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/资源勘查/2016版-X081403-资源勘查工程.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/资源勘查/2017版-X081403-资源勘查工程.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="test" tabindex="-1" href="#">矿物加工工程<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="__PUBLIC__/data/矿物加工/2013版-X081503-矿物加工工程.pdf" target="_blank">2013版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/矿物加工/2014版-X081503-矿物加工工程.pdf" target="_blank">2014版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/矿物加工/2015版-X081503-矿物加工工程.pdf" target="_blank">2015版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/矿物加工/2016版-X081503-矿物加工工程.pdf" target="_blank">2016版</a></li>
+                            <li><a tabindex="-1" href="__PUBLIC__/data/矿物加工/2017版-X081503-矿物加工工程.pdf" target="_blank">2017版</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">课程简介<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="__MODULE__/kecheng/info">浏览</a></li>
+                    <li><a href="__MODULE__/kecheng/downloadinfo?v=b">下载B版</a></li>
+                    <li><a href="__MODULE__/kecheng/downloadinfo?v=c">下载C版</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">课程大纲<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="__MODULE__/kecheng/shedual">按计划批次查看</a></li>
+                    <li><a href="__MODULE__/kecheng/overlook">浏览</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/kecheng/generateWordB"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载(B版)</a></li>
+                    <li><a href="__MODULE__/kecheng/generateExcel?v=B"> <span class="glyphicon glyphicon-save"></span> 生成Excel目录并下载(B版)</a></li>
+                    <li><a href="__MODULE__/kecheng/generateWordC"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载(C版)</a></li>
+                    <li><a href="__MODULE__/kecheng/generateExcel?v=C"> <span class="glyphicon glyphicon-save"></span> 生成Excel目录并下载(C版)</a></li>
+                    <li><a href="__MODULE__/kecheng/generateWord"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载(B+C)</a></li>
+                    <li><a href="__MODULE__/kecheng/generateExcel?v=A"> <span class="glyphicon glyphicon-save"></span> 生成Excel目录并下载(B+C版)</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/kecheng/downloadown">下载自己填的大纲（word版本）</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/kecheng/download?type=c&style=abscent">C版缺大纲</a> </li>
+                    <li><a href="__MODULE__/kecheng/download?type=c&style=conf">C版待确认</a></li>
+                    <li><a href="__MODULE__/kecheng/download?type=c&style=check">C版待审核</a></li>
+                    <li><a href="__MODULE__/kecheng/download?type=c&style=pass">C版已通过</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/kecheng/download?type=b&style=abscent">B版缺大纲</a></li>
+                    <li><a href="__MODULE__/kecheng/download?type=b&style=conf">B版待确认</a></li>
+                    <li><a href="__MODULE__/kecheng/download?type=b&style=check">B版待审核</a></li>
+                    <li><a href="__MODULE__/kecheng/download?type=b&style=pass">B版已通过</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">实验大纲 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="__MODULE__/shiyan/detail"> <span class="glyphicon glyphicon-new-window"></span> 实验课程明细</a></li>
+                    <li><a href="__MODULE__/shiyan/overlook"> <span class="glyphicon glyphicon-eye-open"></span> 浏览</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shiyan/generateWordB"><span class="glyphicon glyphicon-save"></span> 生成word文档并下载(B)</a></li>
+                    <li><a href="__MODULE__/shiyan/generateWordC"><span class="glyphicon glyphicon-save"></span> 生成word文档并下载(C)</a></li>
+                    <li><a href="__MODULE__/shiyan/generateWord"><span class="glyphicon glyphicon-save"></span> 生成word文档并下载(B+C)</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shiyan/generateExcel?v=C">C版实验大纲目录</a> </li>
+                    <li><a href="__MODULE__/shiyan/generateExcel?v=B">B版实验大纲目录</a> </li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shiyan/download?type=c&style=abscent">C版缺大纲</a> </li>
+                    <li><a href="__MODULE__/shiyan/download?type=c&style=conf">C版待确认</a></li>
+                    <li><a href="__MODULE__/shiyan/download?type=c&style=check">C版待审核</a></li>
+                    <li><a href="__MODULE__/shiyan/download?type=c&style=pass">C版已通过</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shiyan/download?type=b&style=abscent">B版缺大纲</a></li>
+                    <li><a href="__MODULE__/shiyan/download?type=b&style=conf">B版待确认</a></li>
+                    <li><a href="__MODULE__/shiyan/download?type=b&style=check">B版待审核</a></li>
+                    <li><a href="__MODULE__/shiyan/download?type=b&style=pass">B版已通过</a></li>
+                </ul>
+            </li>
+            <li><a href="__MODULE__/shiyan/guideBook">实验指导书</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">实践大纲 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="disabled"><a href="#">添加</a></li>
+                    <li><a href="__MODULE__/shijian/overlook">浏览</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shijian/generateWordB"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载（B版）</a></li>
+                    <li><a href="__MODULE__/shijian/generateWordC"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载（C版）</a></li>
+                    <li><a href="__MODULE__/shijian/generateWord"> <span class="glyphicon glyphicon-save"></span> 生成word文档并下载（B+C）</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shijian/download?type=c&style=abscent">C版缺大纲</a> </li>
+                    <li><a href="__MODULE__/shijian/download?type=c&style=conf">C版待确认</a></li>
+                    <li><a href="__MODULE__/shijian/download?type=c&style=check">C版待审核</a></li>
+                    <li><a href="__MODULE__/shijian/download?type=c&style=pass">C版已通过</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="__MODULE__/shijian/download?type=b&style=abscent">B版缺大纲</a></li>
+                    <li><a href="__MODULE__/shijian/download?type=b&style=conf">B版待确认</a></li>
+                    <li><a href="__MODULE__/shijian/download?type=b&style=check">B版待审核</a></li>
+                    <li><a href="__MODULE__/shijian/download?type=b&style=pass">B版已通过</a></li>
+                </ul>
+            </li>
+            <li><a href="__MODULE__/shijian/guideBook">实践指导书</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">矩阵表 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="__MODULE__/Metrix/biyeyaoqiu" target="_blank">毕业要求对培养目标的支撑</a></li>
+                    <li><a href="__MODULE__/Metrix/peiyahngjihua" target="_blank">课程计划与毕业要求对应关系矩阵</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教学任务书 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="__MODULE__/Task/showTaskInfo?v=782">2017-2018学年第二学期</a></li>
+                    <li><a href="__MODULE__/Task/showTaskInfo?v=781">2017-2018学年第一学期</a></li>
+                    <li><a href="__MODULE__/Task/showTaskInfo?v=672">2016-2017学年第二学期</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" style="width: 200px;">
+            <li><a><span class="text-info">{$Think.session.admin_name}</span>您好!</a></li>　　
+            <li><a href="__CONTROLLER__/logout">退出</a></li>
+        </ul>
+    </div>
+</nav>
+
+<br><br>
