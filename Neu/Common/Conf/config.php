@@ -26,7 +26,7 @@ return array(
     'DB_USER'=>'root',          //用户名
     'DB_PWD'=>'johnjohn',       //密码
     'DB_PREFIX'=>'neu_',      //数据库表前缀
-    'DB_DSN'=>'mysql:host=202.118.16.50;dbname=neuplan;charset=utf8',
+    'DB_DSN'=>'mysql:host=127.0.0.1;dbname=neuplan;charset=utf8',
 
 
     //修改视图目录
